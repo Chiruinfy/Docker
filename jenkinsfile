@@ -1,0 +1,20 @@
+node ('MAVEN') {
+	stage('SCM'){
+	git 'https://github.com/Chiruinfy/Docker.git'
+
+}
+
+	stage('Image'){
+	sh 'docker image build -t spc .'
+	sh 'docker container run --name spc1 -d -p 8081:8080 spc'
+}
+
+	stage('List'){
+
+	sh 'docker image ls -a'
+	sh 'docker ps -s'
+	
+}
+
+
+}
